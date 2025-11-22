@@ -1,0 +1,9 @@
+home_ai_assistant_overview.md
+
+.env
+
+venv/
+
+__pycache__
+
+*.pyc

@@ -1,0 +1,178 @@
+# ============================================
+# Base Intents — universal Home Assistant actions
+# ============================================
+# This file contains only foundational intents
+# that nearly all smart homes support:
+# - Lights
+# - Switches
+# - Vacuum cleaners
+# - Media players
+#
+# Device-specific or advanced routines should
+# go into separate files (media.yaml, routines.yaml,
+# spotify.yaml, etc.)
+# ============================================
+
+intents:
+
+  # ----------------------------
+  # LIGHT CONTROL
+  # ----------------------------
+  turn_on_light:
+    phrases:
+      - "turn on the light"
+      - "switch on the light"
+      - "lights on"
+      - "illuminate"
+      - "turn the light on"
+    domain: light
+    service: turn_on
+    parameters: []
+
+  turn_off_light:
+    phrases:
+      - "turn off the light"
+      - "switch off the light"
+      - "lights off"
+      - "kill the lights"
+      - "turn the light off"
+    domain: light
+    service: turn_off
+    parameters: []
+
+  dim_light:
+    phrases:
+      - "dim the light"
+      - "lower the brightness"
+      - "reduce brightness"
+      - "set brightness to"
+    domain: light
+    service: turn_on
+    parameters:
+      - brightness_pct
+
+  brighten_light:
+    phrases:
+      - "brighten the light"
+      - "increase the brightness"
+      - "make it brighter"
+    domain: light
+    service: turn_on
+    parameters:
+      - brightness_pct
+
+  # ----------------------------
+  # SWITCH CONTROL (generic)
+  # ----------------------------
+  turn_on_switch:
+    phrases:
+      - "turn on the switch"
+      - "switch on"
+      - "power on"
+      - "activate"
+    domain: switch
+    service: turn_on
+    parameters: []
+
+  turn_off_switch:
+    phrases:
+      - "turn off the switch"
+      - "switch off"
+      - "power off"
+      - "deactivate"
+    domain: switch
+    service: turn_off
+    parameters: []
+
+  toggle_switch:
+    phrases:
+      - "toggle the switch"
+      - "flip the switch"
+      - "toggle power"
+    domain: switch
+    service: toggle
+    parameters: []
+
+  # ----------------------------
+  # VACUUM CONTROL
+  # ----------------------------
+  start_vacuum:
+    phrases:
+      - "start cleaning"
+      - "vacuum the house"
+      - "start the vacuum"
+      - "begin cleaning"
+      - "clean the floors"
+    domain: vacuum
+    service: start
+    parameters: []
+
+  stop_vacuum:
+    phrases:
+      - "stop cleaning"
+      - "stop the vacuum"
+      - "pause the vacuum"
+      - "pause cleaning"
+    domain: vacuum
+    service: stop
+    parameters: []
+
+  dock_vacuum:
+    phrases:
+      - "return to the dock"
+      - "go home"
+      - "return to base"
+      - "dock the vacuum"
+    domain: vacuum
+    service: return_to_base
+    parameters: []
+
+  # ----------------------------
+  # MEDIA CONTROL
+  # ----------------------------
+  media_play:
+    phrases:
+      - "resume"
+      - "continue"
+      - "play"
+    domain: media_player
+    service: media_play
+    parameters: []
+
+  media_pause:
+    phrases:
+      - "pause"
+      - "hold on"
+      - "pause playback"
+    domain: media_player
+    service: media_pause
+    parameters: []
+
+  media_stop:
+    phrases:
+      - "stop"
+      - "stop playback"
+      - "halt media"
+    domain: media_player
+    service: media_stop
+    parameters: []
+
+  set_volume:
+    phrases:
+      - "set volume to"
+      - "volume"
+      - "turn the volume to"
+      - "set sound level"
+    domain: media_player
+    service: volume_set
+    parameters:
+      - volume_level   # 0.0–1.0
+
+  # ----------------------------
+  # FALLBACK HANDLER
+  # ----------------------------
+  unknown:
+    phrases: []
+    domain: none
+    service: none
+    parameters: []
